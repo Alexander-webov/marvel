@@ -1,6 +1,14 @@
 .comics {
     &__list {
         margin-top: 45px;
+        &-total{
+            margin: 50px 0;
+            text-align: center;
+            font-size: 48px;
+            span{
+                color: #9F0013;
+            }
+        }
     }
     &__grid {
         display: grid;
@@ -32,5 +40,6 @@
         &:hover {
             transform: translateY(-5px);
         }
+        
     }
 }

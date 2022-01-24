@@ -1,9 +1,9 @@
 import './charList.scss';
 import React, { useState, useEffect } from 'react';
-import MarvelServices from '../../services/MarvelServices';
+import useMarvelServices from '../../services/MarvelServices';
 
 const CharList = ({ onCharSelected }) => {
-    const marvelServices = new MarvelServices();
+    const { getAllCharacters } = useMarvelServices();
 
     const [chars, setchars] = useState([]);
     const [offset, setoffset] = useState(219);
@@ -14,8 +14,7 @@ const CharList = ({ onCharSelected }) => {
 
 
     const loadingCars = () => {
-        marvelServices
-            .getAllCharacters()
+        getAllCharacters()
             .then(data => {
                 setchars(data)
             })
@@ -24,15 +23,12 @@ const CharList = ({ onCharSelected }) => {
 
 
     const onRequest = (offset) => {
-        marvelServices
-            .getAllCharacters(offset)
+        getAllCharacters(offset)
             .then(data => {
-
                 setchars([...chars, ...data])
                 setoffset({
                     offset: offset + 9,
                 })
-
             })
     }
 
