@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import './comicsList.scss';
 import useMarvelServices from '../../services/MarvelServices';
+import { NavLink } from 'react-router-dom';
 
 
 
@@ -41,11 +42,11 @@ const ComicsList = () => {
     let comicsElement = comics.map(comics => {
         return (
             <li className="comics__item" key={comics.id}>
-                <a href="#">
+                <NavLink to={`/comics/${comics.id}`}>
                     <img src={comics.thumbnail} alt="ultimate war" className="comics__item-img" />
                     <div className="comics__item-name">{comics.name}</div>
                     <div className="comics__item-price">{comics.price}</div>
-                </a>
+                </NavLink>
             </li>
         )
     })
